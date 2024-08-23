@@ -24,7 +24,6 @@ export default function CountrySearch() {
   const getCountries = useCallback(
     getDebounced(async (text) => {
       try {
-        setIsFetching(true);
         const resp = await fetch(`https://restcountries.com/v3.1/name/${text}`);
         if (resp.ok) {
           const data = await resp.json();
@@ -45,6 +44,7 @@ export default function CountrySearch() {
   const onChangeTextHandler = (text) => {
     setSearchText(text);
     if (text) {
+      setIsFetching(true);
       getCountries(text);
     } else {
       setData([]);
@@ -54,15 +54,15 @@ export default function CountrySearch() {
 
   return (
     <View style={styles.container}>
-      <SearchInput searchText={searchText} onChangeText={onChangeTextHandler} />
-      <View style={{ marginBottom: 8 }} />
+      <View style={{ margin: 16 }}>
+        <SearchInput
+          searchText={searchText}
+          onChangeText={onChangeTextHandler}
+        />
+      </View>
 
       {isFetching ? (
-        <ActivityIndicator
-          style={styles.fetching}
-          size={60}
-          color={Colors.blue.text}
-        />
+        <ActivityIndicator size={60} color={Colors.blue.text} />
       ) : error ? (
         <Text style={styles.error}>{JSON.stringify(error)}</Text>
       ) : (
@@ -88,18 +88,19 @@ CountrySearch.propTypes = {
   styles: PropTypes.object,
 };
 const styles = StyleSheet.create({
-  container: {
-    margin: 16,
-    flex: 1,
-  },
+  container: { flex: 1 },
   list: {
-    marginTop: 16,
-    marginHorizontal: 0,
+    paddingHorizontal: 16,
   },
   separator: {
     padding: 8,
   },
-  empty: {},
-  error: {},
-  fetching: { margin: 8 },
+  empty: {
+    margin: 16,
+    marginTop: 0,
+  },
+  error: {
+    margin: 16,
+    marginTop: 0,
+  },
 });
