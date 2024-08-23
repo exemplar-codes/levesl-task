@@ -43,7 +43,7 @@ export default function CountrySearch() {
 
   const onChangeTextHandler = (text) => {
     setSearchText(text);
-    if (text) {
+    if (text.trim()) {
       setIsFetching(true);
       getCountries(text);
     } else {
