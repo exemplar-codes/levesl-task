@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, StatusBar } from "react-native";
+import { SafeAreaView } from "react-native";
 import CountrySearch from "@/screens/CountrySearch";
 
 export default function Index() {
@@ -8,7 +8,6 @@ export default function Index() {
       style={{
         flex: 1,
         backgroundColor: "white",
-        marginTop: StatusBar.currentHeight,
       }}
     >
       <CountrySearch />
