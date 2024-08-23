@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   capital: {
     fontSize: 14,
     fontWeight: "600",
-    color: "rgba(75, 78, 252, 1)",
+    color: Colors.blue.text,
     fontStyle: "italic",
   },
   currencies: {

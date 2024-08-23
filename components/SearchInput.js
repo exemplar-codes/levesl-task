@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { View, Image, TextInput, StyleSheet } from "react-native";
+import { Colors } from "@/constants/Colors";
 
 export default function SearchInput({ searchText, onChangeText }) {
   return (
@@ -18,6 +19,7 @@ export default function SearchInput({ searchText, onChangeText }) {
         onChangeText={onChangeText}
         style={styles.input}
         placeholder="Search"
+        selectionColor={Colors.blue.text}
       />
     </View>
   );
