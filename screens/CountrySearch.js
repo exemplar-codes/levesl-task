@@ -1,12 +1,18 @@
 import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
-import { Text, View, FlatList, ActivityIndicator } from "react-native";
+import {
+  Text,
+  View,
+  FlatList,
+  ActivityIndicator,
+  StyleSheet,
+} from "react-native";
 import CountryRow from "@/components/CountryRow";
 import SearchInput from "@/components/SearchInput";
 
 import { getDebounced } from "@/utils/common";
 
-export default function CountrySearch({ styles }) {
+export default function CountrySearch() {
   const [searchText, setSearchText] = useState("");
 
   const [data, setData] = useState([]);
@@ -42,14 +48,7 @@ export default function CountrySearch({ styles }) {
   };
 
   return (
-    <View
-      style={{
-        flex: 1,
-        // justifyContent: "center",
-        // alignItems: "center",
-        ...styles,
-      }}
-    >
+    <View style={styles.container}>
       <SearchInput searchText={searchText} onChangeText={onChangeTextHandler} />
       {isFetching ? (
         <ActivityIndicator />
@@ -75,3 +74,9 @@ export default function CountrySearch({ styles }) {
 CountrySearch.propTypes = {
   styles: PropTypes.object,
 };
+const styles = StyleSheet.create({
+  container: {
+    margin: 16,
+    flex: 1,
+  },
+});

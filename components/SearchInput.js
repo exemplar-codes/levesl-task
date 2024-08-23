@@ -28,12 +28,13 @@ SearchInput.propTypes = {
 };
 const styles = StyleSheet.create({
   container: {
-    margin: 16,
     flexDirection: "row",
-    borderWidth: 2,
-    borderColor: "gray",
+    borderWidth: 1,
+    borderColor: "lightgray",
+    borderRadius: 8,
   },
   input: {
+    padding: 8,
     fontSize: 14,
     fontWeight: "500",
   },
