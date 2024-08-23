@@ -11,6 +11,7 @@ import CountryRow from "@/components/CountryRow";
 import SearchInput from "@/components/SearchInput";
 
 import { getDebounced } from "@/utils/common";
+import { Colors } from "@/constants/Colors";
 
 export default function CountrySearch() {
   const [searchText, setSearchText] = useState("");
@@ -25,7 +26,6 @@ export default function CountrySearch() {
       try {
         setIsFetching(true);
         const resp = await fetch(`https://restcountries.com/v3.1/name/${text}`);
-        console.log("API called");
         if (resp.ok) {
           const data = await resp.json();
           setData(data);
@@ -44,25 +44,38 @@ export default function CountrySearch() {
 
   const onChangeTextHandler = (text) => {
     setSearchText(text);
-    if (text) getCountries(text);
+    if (text) {
+      getCountries(text);
+    } else {
+      setData([]);
+      setError(null);
+    }
   };
 
   return (
     <View style={styles.container}>
       <SearchInput searchText={searchText} onChangeText={onChangeTextHandler} />
+      <View style={{ marginBottom: 8 }} />
+
       {isFetching ? (
-        <ActivityIndicator />
+        <ActivityIndicator
+          style={styles.fetching}
+          size={60}
+          color={Colors.blue.text}
+        />
       ) : error ? (
-        <Text>{JSON.stringify(error)}</Text>
+        <Text style={styles.error}>{JSON.stringify(error)}</Text>
       ) : (
         <>
           {isEmpty && searchText ? (
-            <Text>No country found!</Text>
+            <Text style={styles.empty}>No country found!</Text>
           ) : (
             <FlatList
               data={data}
               keyExtractor={(item) => item.cca2}
               renderItem={({ item }) => <CountryRow country={item} />}
+              style={styles.list}
+              ItemSeparatorComponent={() => <View style={styles.separator} />}
             />
           )}
         </>
@@ -79,4 +92,14 @@ const styles = StyleSheet.create({
     margin: 16,
     flex: 1,
   },
+  list: {
+    marginTop: 16,
+    marginHorizontal: 0,
+  },
+  separator: {
+    padding: 8,
+  },
+  empty: {},
+  error: {},
+  fetching: { margin: 8 },
 });
