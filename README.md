@@ -1,3 +1,14 @@
+Task:
+Build a React Native app that:
+
+- Displays a list of countries along with a high-level overview of each country using the API from https://restcountries.com/ to fetch country information.
+- Includes an input field. As a user types in this field, the list should update to display only the countries whose names match the input. For example, typing 'Al' should filter the list to show "Albania" and "Algeria" along with their respective details.
+- You are encouraged to add any additional features or enhancements as you deem appropriate.
+
+We'll be assessing both your code quality and your sense of design. You are welcome to use any third-party libraries. Please document any potential enhancements or changes that you think would improve the app but did not have the time to implement.
+
+---
+
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
