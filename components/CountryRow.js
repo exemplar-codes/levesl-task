@@ -12,7 +12,7 @@ export default function CountryRow({ country }) {
         <Text style={styles.capital}>{country?.capital?.join(", ")}</Text>
       </View>
       {/*  */}
-      <Text style={{ color: "black" }}>
+      <Text style={styles.currencies}>
         {Object.keys(country?.currencies ?? {}).join(", ")}
       </Text>
     </View>
