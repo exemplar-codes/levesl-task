@@ -24,7 +24,9 @@ export default function CountrySearch() {
   const getCountries = useCallback(
     getDebounced(async (text) => {
       try {
-        const resp = await fetch(`https://restcountries.com/v3.1/name/${text}`);
+        const resp = await fetch(
+          `https://restcountries.com/v3.1/name/${text.trim()}`
+        ); // trim needed since API behaves differently based on whitespace at ends
         if (resp.ok) {
           const data = await resp.json();
           // if search term is empty now (i.e. was not empty at API call start), clear the list.
