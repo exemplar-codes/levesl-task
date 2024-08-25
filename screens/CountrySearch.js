@@ -25,7 +25,9 @@ export default function CountrySearch() {
     getDebounced(async (text) => {
       try {
         const resp = await fetch(
-          `https://restcountries.com/v3.1/name/${text.trim()}`
+          `https://restcountries.com/v3.1/name/${encodeURIComponent(
+            text.trim()
+          )}`
         ); // trim needed since API behaves differently based on whitespace at ends
         if (resp.ok) {
           const data = await resp.json();
