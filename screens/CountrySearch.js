@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import PropTypes from "prop-types";
 import {
   Text,
@@ -27,7 +27,17 @@ export default function CountrySearch() {
         const resp = await fetch(`https://restcountries.com/v3.1/name/${text}`);
         if (resp.ok) {
           const data = await resp.json();
-          setData(data);
+          // if search term is empty, clear the list.
+          // otherwise set data as usual
+          setSearchText((latestSearchText) => {
+            if (!latestSearchText.trim()) {
+              setData([]);
+            } else {
+              setData(data);
+            }
+            return latestSearchText;
+          });
+
           setError(null);
         } else {
           setError(resp.statusText);
@@ -43,12 +53,17 @@ export default function CountrySearch() {
 
   const onChangeTextHandler = (text) => {
     setSearchText(text);
-    if (text.trim()) {
-      setIsFetching(true);
-      getCountries(text);
-    } else {
+
+    if (!text.trim()) {
       setData([]);
       setError(null);
+      return;
+    }
+
+    // optimization: avoid API calls for whitespace change
+    if (text.trim() !== searchText.trim()) {
+      setIsFetching(true);
+      getCountries(text);
     }
   };
 
