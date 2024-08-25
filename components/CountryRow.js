@@ -14,7 +14,7 @@ export default function CountryRow({ country }) {
           width: 80,
         }}
       />
-      <View>
+      <View style={styles.middleBox}>
         <Text style={styles.name}>{country?.name?.common} </Text>
         <Text style={styles.capital}>{country?.capital?.join(", ")}</Text>
       </View>
@@ -35,6 +35,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 16,
     alignItems: "center",
+  },
+  middleBox: {
+    flex: 1, // so long name doesnt cause overflow
   },
   name: {
     fontSize: 16,
