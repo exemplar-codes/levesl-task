@@ -6,12 +6,11 @@ import { Colors } from "@/constants/Colors";
 export default function CountryRow({ country }) {
   return (
     <View style={styles.container}>
+      <Image source={{ uri: country?.flags?.png, height: 40, width: 40 }} />
       <View>
-        {/* <Image source={{ uri: country?.flags?.svg, height: 42, width: 42 }} /> */}
         <Text style={styles.name}>{country?.name?.common} </Text>
         <Text style={styles.capital}>{country?.capital?.join(", ")}</Text>
       </View>
-      {/*  */}
       <Text style={styles.currencies}>
         {Object.keys(country?.currencies ?? {}).join(", ")}
       </Text>
@@ -27,7 +26,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-between",
+    gap: 16,
     alignItems: "center",
   },
   name: {
@@ -44,5 +43,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
     color: Colors.dark.text,
+    marginLeft: "auto",
   },
 });
