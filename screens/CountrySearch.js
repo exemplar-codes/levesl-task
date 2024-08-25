@@ -84,7 +84,7 @@ export default function CountrySearch() {
         <Text style={styles.error}>{JSON.stringify(error)}</Text>
       ) : (
         <>
-          {isEmpty && searchText ? (
+          {isEmpty && searchText.trim() ? (
             <Text style={styles.empty}>No country found!</Text>
           ) : (
             <FlatList
