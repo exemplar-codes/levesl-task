@@ -29,7 +29,7 @@ export default function CountrySearch() {
         ); // trim needed since API behaves differently based on whitespace at ends
         if (resp.ok) {
           const data = await resp.json();
-          // if search term is empty now (i.e. was not empty at API call start), clear the list.
+          // if latest search term is empty now (i.e. was not empty at API call start), clear the list.
           // otherwise set data as usual
           setSearchText((latestSearchText) => {
             if (!latestSearchText.trim()) {
