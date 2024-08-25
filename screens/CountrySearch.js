@@ -27,7 +27,7 @@ export default function CountrySearch() {
         const resp = await fetch(`https://restcountries.com/v3.1/name/${text}`);
         if (resp.ok) {
           const data = await resp.json();
-          // if search term is empty, clear the list.
+          // if search term is empty now (i.e. was not empty at API call start), clear the list.
           // otherwise set data as usual
           setSearchText((latestSearchText) => {
             if (!latestSearchText.trim()) {
