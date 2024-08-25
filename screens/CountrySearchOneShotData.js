@@ -12,6 +12,9 @@ import SearchInput from "@/components/SearchInput";
 
 import { Colors } from "@/constants/Colors";
 
+/*
+ * One API call, then offline, copies filtered data. Faster.
+ */
 export default function CountrySearchOneShotData() {
   const [searchText, setSearchText] = useState("");
 

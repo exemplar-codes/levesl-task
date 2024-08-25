@@ -13,6 +13,9 @@ import SearchInput from "@/components/SearchInput";
 import { getDebounced } from "@/utils/common";
 import { Colors } from "@/constants/Colors";
 
+/*
+ * Fully online, each filter fires an API call.
+ */
 export default function CountrySearch() {
   const [searchText, setSearchText] = useState("");
 

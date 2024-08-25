@@ -12,6 +12,9 @@ import SearchInput from "@/components/SearchInput";
 
 import { Colors } from "@/constants/Colors";
 
+/**
+ * One API call, then offline, uses empty slots. Slower.
+ */
 export default function CountrySearchOneShot() {
   const [searchText, setSearchText] = useState("");
 
