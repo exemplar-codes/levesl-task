@@ -6,7 +6,14 @@ import { Colors } from "@/constants/Colors";
 export default function CountryRow({ country }) {
   return (
     <View style={styles.container}>
-      <Image source={{ uri: country?.flags?.png, height: 40, width: 40 }} />
+      <Image
+        source={{ uri: country?.flags?.png }}
+        resizeMode="contain"
+        style={{
+          height: 40,
+          width: 80,
+        }}
+      />
       <View>
         <Text style={styles.name}>{country?.name?.common} </Text>
         <Text style={styles.capital}>{country?.capital?.join(", ")}</Text>
@@ -42,7 +49,7 @@ const styles = StyleSheet.create({
   currencies: {
     fontSize: 16,
     fontWeight: "600",
-    color: Colors.dark.text,
+    color: "green",
     marginLeft: "auto",
   },
 });
