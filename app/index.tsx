@@ -1,15 +1,18 @@
-import { Text, View } from "react-native";
+import React from "react";
+import { SafeAreaView } from "react-native";
+import CountrySearch from "@/screens/CountrySearch";
+import CountrySearchOneShotUI from "@/screens/CountrySearchOneShotUI";
+import CountrySearchOneShotData from "@/screens/CountrySearchOneShotData"; // task
 
 export default function Index() {
   return (
-    <View
+    <SafeAreaView
       style={{
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        backgroundColor: "white",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
+      <CountrySearchOneShotData />
+    </SafeAreaView>
   );
 }
